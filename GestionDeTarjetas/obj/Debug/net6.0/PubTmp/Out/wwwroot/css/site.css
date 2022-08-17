@@ -1,0 +1,187 @@
+:root {
+    --color-hover: #ef5325;
+    --color-btn-oscuro: #d4dcff;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+
+.displayInline {
+    display: inline-block;
+}
+
+.oscuro {
+    background-color: var(--color-btn-oscuro);
+}
+
+.derecha {
+    text-align: center;
+}
+
+.derecha-config {
+    padding-left: 85%;
+}
+
+.config a:hover {
+    color: var(--color-hover);
+}
+
+
+.logoIntec {
+    width:140px;
+    height:140px;
+    border-radius:50%;
+}
+
+.centrado {
+    display: flex;
+    justify-content: center;
+}
+
+
+#sidebar {
+    min-width: 300px;
+    max-width: 300px;
+    background: #4275ff1a;
+    color: #fff;
+    -webkit-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+    #sidebar.active {
+        margin-left: -300px;
+    }
+
+    #sidebar .logo {
+        display: block;
+        width: 120px;
+        height: 120px;
+        margin: 0 auto;
+    }
+
+        #sidebar .logo span {
+            display: block;
+        }
+
+    #sidebar ul.components {
+        padding: 0;
+    }
+
+    #sidebar ul li {
+        font-size: 16px;
+    }
+
+        #sidebar ul li > ul {
+            margin-left: 10px;
+        }
+
+            #sidebar ul li > ul li {
+                font-size: 14px;
+            }
+
+        #sidebar ul li a {
+            padding: 10px 0;
+            display: block;
+            color: #2c2c2c;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+.naranja.active {
+    color: var(--color-hover);
+}
+
+.naranja a:hover {
+    color: var(--color-hover);
+}
+
+
+#sidebar ul li a:hover {
+    color: var(--color-hover);
+}
+
+#sidebar ul li.active > a {
+    background: transparent;
+    color: #020202;
+}
+
+#sidebar ul li a:hover {
+    text-decoration: none;
+}
+
+.modificar a{
+    color: white;
+}
+
+.modificar:visited {
+        color: white;
+ }
+
+.modificar a:visited {
+    color: white;
+}
+
+
+ .modificar a:hover {
+        color: white;
+    }
+
+
+@media (max-width: 991.98px) {
+    #sidebar {
+        margin-left: -300px;
+    }
+
+        #sidebar.active {
+            margin-left: 0;
+        }
+}
+
+a[data-toggle="collapse"] {
+    position: relative;
+}
+
+.dropdown-toggle::after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+@media (max-width: 991.98px) {
+    #sidebarCollapse span {
+        display: none;
+    }
+}
+
+#content {
+    width: 100%;
+    padding: 0;
+    min-height: 100vh;
+    -webkit-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.footer p {
+    color: rgba(255, 255, 255, 0.5);
+    text-align: center;
+}
+
+
+form .titulos-labels{
+    font-size : 1rem;
+}
+
+form .submit-button{
+    font-size : 1rem;
+}

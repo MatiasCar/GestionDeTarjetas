@@ -1,0 +1,141 @@
+﻿@{
+    ViewData["Title"] = "Configuración Visa";
+}
+
+@using GestionDeTarjetas.Models.ViewModels
+
+@model ConfigViewModel
+
+<div class="wrapper d-flex align-items-stretch">
+
+    <partial name="../Shared/_pvSidebar.cshtml" />
+
+    <!-- Page Content  -->
+    <div id="content" class="p-4 p-md-5">
+        <div class="derecha-config">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                 class="bi bi-arrow-left" viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                      d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
+            </svg>
+            <a class="config" asp-area="" asp-controller="Home" asp-action="Index">Volver</a>
+        </div>
+
+
+        <h2 class="mb-4">Configuración VISA</h2>
+
+        <hr />  <br />
+
+        <form action="/Configuracion/GuardarVisa" method="post" id="formulario">
+
+            <br>
+
+            <div class="col-md-6 mb-5">
+                <div class="form-group">
+                    <label class="control-label titulos-labels">Tipo de Comprobante</label>
+                    <select class="form-select" name="TipoFact" multiple>
+                        @{
+                            foreach (string elem in @Model.TipoFact)
+                            {
+                                <option>@elem</option>
+                            }
+                        }
+                    </select>
+
+                </div>
+            </div>
+
+
+            <br>
+
+            <div class="col-md-6 mb-5">
+                <div class="form-group">
+
+                    <label class="control-label titulos-labels">Tipo de Recibo</label>
+                    <select class="form-select" name="TipoRec">
+                        @{
+                            foreach (string elem in @Model.TipoRec)
+                            {
+                                <option>@elem</option>
+                            }
+                        }
+                    </select>
+                </div>
+            </div>
+
+            <br />
+
+            <div class="col-md-6 mb-5">
+                <div class="form-group">
+                    <label class="control-label titulos-labels">Cobrador</label>
+
+                    <select class="form-select" name="Cobrador">
+                        @{
+                            foreach (string elem in @Model.Cobrador)
+                            {
+                                <option>@elem</option>
+                            }
+                        }
+                    </select>
+                </div>
+            </div>
+
+            <br>
+
+
+            <div class="col-md-5 mb-4">
+                <label class="control-label titulos-labels">Cuenta</label>
+                <div class="form-group">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+
+                    <select id="ddlCustomers" class="form-extra" name="CtaContable">
+                        @{
+                            foreach (string elem in @Model.CtaContable)
+                            {
+                                <option>@elem</option>
+                            }
+                        }
+                    </select>
+
+                </div>
+            </div>
+
+
+            <br />
+           
+
+            <div class="form-check form-switch">
+                <input class="form-check-input" asp-for="Utilizable" type="checkbox" id="Utilizable" name="Utilizable">
+                <label class="form-check-label titulos-labels">Utilizable</label>
+            </div>
+
+            <br />
+
+            <div class="col-md-12 text-center">
+                <div class="displayInline">
+                    <button onclick="show()" type="submit" class="btn btn-primary submit-button">Guardar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!-- panel principal -->
+</div>
+
+
+
+@section Scripts{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" />
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+<script type="text/javascript">
+    $(function() {
+        $("#ddlCustomers").select2();
+    });
+</script>
+
+
+    }

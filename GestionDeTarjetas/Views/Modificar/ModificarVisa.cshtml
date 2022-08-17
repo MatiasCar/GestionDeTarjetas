@@ -1,0 +1,182 @@
+﻿@using GestionDeTarjetas.Models.ViewModels
+@model ModificarViewModel
+
+
+<div class="wrapper d-flex align-items-stretch">
+
+    <partial name="../Shared/_pvSidebar.cshtml" />
+
+    <!-- Page Content  -->
+    <div id="content" class="p-4 p-md-5">
+        <div class="derecha-config">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                 class="bi bi-arrow-left" viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                      d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
+            </svg>
+            <a class="config" asp-area="" asp-controller="Configuracion" asp-action="GuardarVisa">Volver</a>
+        </div>
+
+        <!-- alertas inicio-->
+        <div onclick="cerrarModificar()" class="alert alert-primary" id="alertSuccess" role="alert">
+            La grabación fue exitosa
+        </div>
+        <!-- alertas fin-->
+
+
+        <h2 class="mb-4">Configuración VISA</h2>
+
+        <hr />  <br />
+
+        <form action="/Configuracion/GuardarVisa" method="post">
+            <div class="col-md-4 mb-3">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Cuenta contable">
+                    <div class="input-group-btn">
+                        <button class="btn btn-primary" type="submit">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                 class="bi bi-search" viewBox="0 0 16 16">
+                                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="col-md-4 mb-3">
+                <select class="form-select" aria-label="Default select example">
+                    @foreach (var item in @Model.Cuentas)
+                    {
+
+                        if (@Model.CuentasSeleccionadas.Contains(item.CtaCte))
+                        {
+                            <option value=@item.CtaCte selected>@Html.DisplayFor(modelItem => item.CtaCte)</option>
+                        }
+                        else
+                        {
+                            <option value=@item.CtaCte>@Html.DisplayFor(modelItem => item.CtaCte)</option>
+                        }
+
+                    }
+
+                </select>
+            </div>
+
+            <br>
+
+            <div class="col-md-4 mb-3">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Cobrador">
+                    <div class="input-group-btn">
+                        <button class="btn btn-primary" type="submit">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                 class="bi bi-search" viewBox="0 0 16 16">
+                                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="col-md-4 mb-3">
+                <select class="form-select" aria-label="Default select example">
+                    @foreach (var item in @Model.Cobradores)
+                    {
+
+                        if (@Model.CobradoresSeleccionados.Contains(item.ClieCobrador))
+                        {
+                            <option value=@item.ClieCobrador selected>@Html.DisplayFor(modelItem => item.ClieCobrador)</option>
+                        }
+                        else
+                        {
+                            <option value=@item.ClieCobrador>@Html.DisplayFor(modelItem => item.ClieCobrador)</option>
+
+                        }
+
+                    }
+
+                </select>
+            </div>
+
+            <br>
+            <div class="col-md-4 mb-3">
+                <select class="form-select" aria-label="Default select example" multiple>
+                    <option> Tipo de Facturas</option>
+
+                    @foreach (var item in @Model.Facturas)
+                    {
+
+                        if (@Model.FacturasSeleccionadas.Contains(item.TipoVar))
+                        {
+                            <option value=@item.TipoVar selected>@Html.DisplayFor(modelItem => item.TipoVar)</option>
+                        }
+                        else
+                        {
+                            <option value=@item.TipoVar>@Html.DisplayFor(modelItem => item.TipoVar)</option>
+
+                        }
+
+                    }
+
+                </select>
+            </div>
+
+            <br>
+
+            <div class="col-md-4 mb-3">
+                <select class="form-select" aria-label="Default select example">
+                    <option selected> Tipo d Recibos</option>
+                    @foreach (var item in @Model.Recibos)
+                    {
+
+                        if (@Model.RecibosSeleccionados.Contains(item.TipoDeRecibo))
+                        {
+                            <option value=@item.TipoDeRecibo selected>@Html.DisplayFor(modelItem => item.TipoDeRecibo)</option>
+                        }
+                        else
+                        {
+                            <option value=@item.TipoDeRecibo>@Html.DisplayFor(modelItem => item.TipoDeRecibo)</option>
+                        }
+
+                    }
+
+                </select>
+            </div>
+
+            <br>
+
+            <div class="col-md-4 mb-3">
+                <div class="form-group">
+                    <div class="form-check">
+                        &emsp;&emsp;
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
+                               value="option1" checked>
+                        <label class="form-check-label" for="exampleRadios1">
+                            Utilizable
+                        </label>
+                    </div>
+
+                    <div class="form-check">
+                        &emsp;&emsp;
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2"
+                               value="option2">
+                        <label class="form-check-label" for="exampleRadios2">
+                            No Utilizable
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <br />
+
+            <div class="displayInline">
+                <button onclick="showModificar()"  type="submit" class="btn btn-primary">Guardar</button>
+                <a asp-area="" asp-controller="Configuracion" asp-action="GuardarVisa"></a>
+            </div>
+        </form>
+    </div>
+</div>

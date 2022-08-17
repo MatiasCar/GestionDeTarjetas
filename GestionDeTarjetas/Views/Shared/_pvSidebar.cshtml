@@ -1,0 +1,28 @@
+﻿
+<nav id="sidebar">
+    <div class="p-4 pt-5">
+
+        <div class="centrado">
+            <img class="logoIntec" src="~/img/intec.jpg" />
+        </div>
+    
+        <ul class="list-unstyled components mb-5">
+            <li class=" naranja">
+                <a href="index.html" data-toggle="collapse" aria-expanded="true"
+                   class="dropdown-toggle">Débitos</a>
+                <ul class="collapse list-unstyled show" id="homeSubmenu">
+                    <li>
+                        <a asp-area="" asp-controller="Home" asp-action="Index">Visa</a>
+
+                    </li>
+                    @*  <li>
+                    <a href="#">Amex</a>
+                    </li>
+                    <li>
+                    <a href="#">MasterCard</a>
+                    </li>*@
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>
